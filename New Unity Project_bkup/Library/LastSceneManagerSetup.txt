@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/lobby_wUI_wFB.unity
+  isLoaded: 1
+  isActive: 1
