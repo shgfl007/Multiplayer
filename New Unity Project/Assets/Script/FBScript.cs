@@ -14,11 +14,24 @@ public class FBScript : MonoBehaviour {
 	bool initStatus = false;
 	void Awake(){
 		FacebookManager.Instance.InitFB ();
-
+		//DontDestroyOnLoad (gameObject);
 		//DealWithFbMenus (FacebookManager.Instance.IsLoggedIn);
 		Invoke("setFbMenu", 0.1f);
 		Debug.Log(FacebookManager.Instance.IsLoggedIn);
 	}
+	void Update(){
+		if (DialogLoggedIn == null)
+			FindFBPanel ();
+	}
+
+	void FindFBPanel(){
+		DialogLoggedIn = GameObject.Find ("FBLoggedIn");
+		DialogLoggedOut = GameObject.Find("FBPanel").transform.GetChild(0).gameObject;
+		DialogUserName = GameObject.Find ("PName");
+		DialogProfilePic = GameObject.Find ("Profile");
+	
+	}
+
 
 	void setFbMenu(){
 		bool isLoggedIn = FacebookManager.Instance.IsLoggedIn;
@@ -58,7 +71,7 @@ public class FBScript : MonoBehaviour {
 
 			if (FacebookManager.Instance.profileName != null) {
 				Text userName = DialogUserName.GetComponent<Text> ();
-				userName.text = "Hello, " + FacebookManager.Instance.profileName;
+				userName.text = FacebookManager.Instance.profileName.ToUpper();
 			} else {
 				StartCoroutine ("WaitForProfileName");
 			}

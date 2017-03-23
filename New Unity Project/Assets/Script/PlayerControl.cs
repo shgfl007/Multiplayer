@@ -89,7 +89,7 @@ public class PlayerControl : NetworkBehaviour {
 	public void TryMoveTouch(){
 		RaycastHit hit;
 		Touch touch;
-		Debug.Log (Input.touchCount);
+		//Debug.Log (Input.touchCount);
 		if (Input.touchCount > 0) {
 			touch = Input.touches [0];
 

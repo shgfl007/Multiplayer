@@ -46,7 +46,7 @@ namespace Prototype.NetworkLobby
         public override void OnClientEnterLobby()
         {
             base.OnClientEnterLobby();
-
+			Debug.Log ("player enter lobby called");
             if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(1);
 
             LobbyPlayerList._instance.AddPlayer(this);

@@ -58,8 +58,10 @@ public class GvrViewer : MonoBehaviour {
   public static void Create() {
     if (instance == null && UnityEngine.Object.FindObjectOfType<GvrViewer>() == null) {
       Debug.Log("Creating GvrViewer object");
+
       var go = new GameObject("GvrViewer", typeof(GvrViewer));
       go.transform.localPosition = Vector3.zero;
+			go.tag="gvrView";
       // sdk will be set by Awake().
     }
   }

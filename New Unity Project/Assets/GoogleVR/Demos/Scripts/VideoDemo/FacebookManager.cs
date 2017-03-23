@@ -43,6 +43,7 @@ public class FacebookManager : MonoBehaviour {
 		Debug.Log ("get profile called");
 		FB.API ("/me?fields=first_name", HttpMethod.GET, DisplayUserName);
 		FB.API ("/me/picture?type=square&height=128&width=128", HttpMethod.GET, DisplayProfilePic);
+
 		FB.GetAppLink (DealWithAppLink);
 		Debug.Log ("access token is " + AccessToken.CurrentAccessToken.TokenString);
 		IsLoggedIn = FB.IsLoggedIn;

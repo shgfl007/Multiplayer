@@ -7,6 +7,7 @@ using Prototype.NetworkLobby;
 public class LobbyFB : MonoBehaviour {
 
 	public GameObject loginPanel;
+	public GameObject loginButton;
 	public Text loginPanelText;
 	void Awake(){
 		//if (!FacebookManager.Instance)
@@ -40,10 +41,13 @@ public class LobbyFB : MonoBehaviour {
 	void AuthCallBack(IResult result){
 		if (result.Error != null) {
 			Debug.Log (result.Error);
+			loginPanelText.text = "Login failed! " + result.Error;
 		} else {
 			if (FB.IsLoggedIn) {
 				FacebookManager.Instance.IsLoggedIn =FB.IsLoggedIn;
 				loginPanelText.text = "Login success! ";
+				//hide login button after success login
+				loginButton.SetActive(false);
 				FacebookManager.Instance.GetProfile ();
 				if (FacebookManager.Instance.profileName != null) {
 					updatePlayerName ();
